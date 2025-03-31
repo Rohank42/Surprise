@@ -1,192 +1,315 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday</title>
-    <style>
-        /* Your existing CSS styles */
-        body {
-            background-color: #ffe4e1;
-            font-family: 'Dancing Script', cursive;
-            text-align: center;
-            overflow-y: auto;
-            position: relative;
-        }
-        .container {
-            margin-top: 50px;
-            padding-bottom: 50px;
-        }
-        .title {
-            font-size: 3em;
-            color: #d63384;
-        }
-        .section {
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 80%;
-        }
-        .hidden {
-            display: none;
-        }
-        .revealed {
-            display: block;
-        }
-        .candle {
-            width: 10px;
-            height: 30px;
-            background: red;
-            margin: 10px auto;
-        }
-        @keyframes sparkle {
-            0% { opacity: 0.5; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(-10px); }
-            100% { opacity: 0.5; transform: translateY(0); }
-        }
-        .sparkles {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background: #ff69b4;
-            border-radius: 50%;
-            animation: sparkle 1.5s infinite;
-        }
-        .music-player {
-            margin-top: 15px;
-        }
-        button {
-            background: linear-gradient(135deg, #ff6699, #ff3366);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            border-radius: 25px;
-            cursor: pointer;
-            font-family: 'Dancing Script', cursive;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 10px rgba(255, 51, 102, 0.3);
-        }
-        button:hover {
-            background: linear-gradient(135deg, #ff3366, #cc0055);
-            transform: scale(1.1);
-            box-shadow: 0 6px 15px rgba(255, 51, 102, 0.5);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>CodePen - Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">Happy Birthday!</h1>
-        <div id="memories" class="section">
-            <h2>Favorite Memories</h2>
-            <p>Share your most cherished moments here.</p>
-        </div>
-        <div id="cake" class="section">
-            <h2>Light the Cake</h2>
-            <button onclick="lightCandle()">Light Candle</button>
-            <div id="candle" class="candle"></div>
-        </div>
-        <div id="wish" class="section">
-            <h2>Make a Wish</h2>
-            <button onclick="showWishInput()">Make a Wish</button>
-            <div id="wishBox" class="hidden">
-                <input type="text" id="wishInput" name="wishColumn" placeholder="Enter your wish here...">
-                <button id="submitWish">Submit Wish</button>
-            </div>
-            <p id="wishMessage" class="hidden"></p>
-        </div>
-        <div id="music" class="section">
-            <h2>Favorite Music</h2>
-            <p>Enjoy the playlist of favorite songs.</p>
-            <audio class="music-player" controls>
-                <source src="your-song.mp3" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div id="note" class="section">
-            <h2>A Special Note</h2>
-            <button onclick="revealNote()">Reveal</button>
-            <p id="hiddenNote" class="hidden">You are loved and cherished more than words can express!</p>
-        </div>
+<!-- partial:index.partial.html -->
+<body class="not-loaded">
+  <div id="foru"></div>
+  <div class="night"></div>
+  <div class="flowers">
+    <div class="flower flower--1">
+      <div class="flower__leafs flower__leafs--1">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
+
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
+
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+        <div class="flower__line__leaf flower__line__leaf--5"></div>
+        <div class="flower__line__leaf flower__line__leaf--6"></div>
+      </div>
     </div>
 
-    <script>
-        // Function to handle the "Submit Wish" button
-        document.getElementById("submitWish").addEventListener("click", makeWish);
+    <div class="flower flower--2">
+      <div class="flower__leafs flower__leafs--2">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
 
-        // The makeWish function that shows the wish on the page
-        function makeWish() {
-            let wishText = document.getElementById("wishInput").value;
-            let wishMessage = document.getElementById("wishMessage");
-        
-            if (wishText.trim() !== "") {
-                // Display the wish on the page
-                wishMessage.innerHTML = `Your wish: "${wishText}" is in the stars!`;
-                wishMessage.classList.remove("hidden");
-            } else {
-                alert("Please enter a wish!");
-            }
-        }
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
 
-        document.getElementById("submitWish").addEventListener("click", function() {
-            const wishInput = document.getElementById("wishInput").value;
-        
-            if (wishInput.trim() !== "") {
-              fetch("https://script.google.com/macros/s/AKfycbzHLDJ6mhdwK35KNgaE7ox8B_T79lSjFbjpFS10jkFxKab9Ov726P5vX5-t5f0LweKZ/exec", { // Replace with your Apps Script web app URL
-                method: "POST",
-                headers: {
-                "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ wish: wishInput })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.result === "Success") {
-                document.getElementById("wishMessage").textContent = "Your wish has been submitted!";
-                document.getElementById("wishMessage").classList.remove("hidden");
-                document.getElementById("wishBox").classList.add("hidden");
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                document.getElementById("wishMessage").textContent = "An error occurred. Please try again.";
-                document.getElementById("wishMessage").classList.remove("hidden");
-            });
-            }
-        });
-        
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
 
-        // Function to light the candle
-        function lightCandle() {
-            document.getElementById("candle").style.background = "yellow";
-        }
+    <div class="flower flower--3">
+      <div class="flower__leafs flower__leafs--3">
+        <div class="flower__leaf flower__leaf--1"></div>
+        <div class="flower__leaf flower__leaf--2"></div>
+        <div class="flower__leaf flower__leaf--3"></div>
+        <div class="flower__leaf flower__leaf--4"></div>
+        <div class="flower__white-circle"></div>
 
-        // Function to show the input box for making a wish
-        function showWishInput() {
-            document.getElementById("wishBox").classList.remove("hidden");
-        }
+        <div class="flower__light flower__light--1"></div>
+        <div class="flower__light flower__light--2"></div>
+        <div class="flower__light flower__light--3"></div>
+        <div class="flower__light flower__light--4"></div>
+        <div class="flower__light flower__light--5"></div>
+        <div class="flower__light flower__light--6"></div>
+        <div class="flower__light flower__light--7"></div>
+        <div class="flower__light flower__light--8"></div>
 
-        // Function to reveal the special note
-        function revealNote() {
-            document.getElementById("hiddenNote").classList.remove("hidden");
-        }
+      </div>
+      <div class="flower__line">
+        <div class="flower__line__leaf flower__line__leaf--1"></div>
+        <div class="flower__line__leaf flower__line__leaf--2"></div>
+        <div class="flower__line__leaf flower__line__leaf--3"></div>
+        <div class="flower__line__leaf flower__line__leaf--4"></div>
+      </div>
+    </div>
 
-        // Function to create sparkles
-        function createSparkles() {
-            for (let i = 0; i < 50; i++) {
-                let sparkle = document.createElement("div");
-                sparkle.className = "sparkles";
-                sparkle.style.top = Math.random() * window.innerHeight + "px";
-                sparkle.style.left = Math.random() * window.innerWidth + "px";
-                sparkle.style.animationDuration = (Math.random() * 2 + 1) + "s";
-                document.body.appendChild(sparkle);
-            }
-        }
-        
-        // Create sparkles on page load
-        createSparkles();
-    </script>
+    <div class="grow-ans" style="--d:1.2s">
+      <div class="flower__g-long">
+        <div class="flower__g-long__top"></div>
+        <div class="flower__g-long__bottom"></div>
+      </div>
+    </div>
+
+    <div class="growing-grass">
+      <div class="flower__grass flower__grass--1">
+        <div class="flower__grass--top"></div>
+        <div class="flower__grass--bottom"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+        <div class="flower__grass__overlay"></div>
+      </div>
+    </div>
+
+    <div class="growing-grass">
+      <div class="flower__grass flower__grass--2">
+        <div class="flower__grass--top"></div>
+        <div class="flower__grass--bottom"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--1"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--2"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--3"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--4"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--5"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--6"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--7"></div>
+        <div class="flower__grass__leaf flower__grass__leaf--8"></div>
+        <div class="flower__grass__overlay"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:2.4s">
+      <div class="flower__g-right flower__g-right--1">
+        <div class="leaf"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:2.8s">
+      <div class="flower__g-right flower__g-right--2">
+        <div class="leaf"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:2.8s">
+      <div class="flower__g-front">
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--1">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--2">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--3">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--4">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--5">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--6">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--7">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__leaf-wrapper flower__g-front__leaf-wrapper--8">
+          <div class="flower__g-front__leaf"></div>
+        </div>
+        <div class="flower__g-front__line"></div>
+      </div>
+    </div>
+
+    <div class="grow-ans" style="--d:3.2s">
+      <div class="flower__g-fr">
+        <div class="leaf"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--1"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--2"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--3"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--4"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--5"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--6"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--7"></div>
+        <div class="flower__g-fr__leaf flower__g-fr__leaf--8"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--0">
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:2.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--1">
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.8s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--2">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.4s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--3">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--4">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--5">
+      <div class="grow-ans" style="--d:4s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--6">
+      <div class="grow-ans" style="--d:4.2s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.4s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.6s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:4.8s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+
+    <div class="long-g long-g--7">
+      <div class="grow-ans" style="--d:3s">
+        <div class="leaf leaf--0"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.2s">
+        <div class="leaf leaf--1"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.5s">
+        <div class="leaf leaf--2"></div>
+      </div>
+      <div class="grow-ans" style="--d:3.6s">
+        <div class="leaf leaf--3"></div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
 </body>
 </html>
